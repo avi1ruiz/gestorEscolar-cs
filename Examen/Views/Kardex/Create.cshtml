@@ -1,0 +1,29 @@
+﻿@model Examen.Models.Kardex
+
+@{
+    ViewData["Title"] = "Asignar materias";
+}
+
+
+<h1>@TempData["noControl"]</h1>
+
+<h4>Asignar materias a alumno</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" asp-route-id="@TempData["noControl"]">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MateriaId" class="form-label">Materia</label>
+                <select asp-for="MateriaId" class="form-control" asp-items="ViewBag.Lista"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-route-id="@TempData["noControl"]">Regresar</a>
+</div>

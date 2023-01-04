@@ -1,0 +1,35 @@
+﻿@model Examen.Models.Calificacione
+
+@{
+    ViewData["Title"] = "Calificar";
+}
+
+
+<h1>@TempData["noControl"]</h1>
+
+<h4>Asignar Calificación a alumno</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CalificacionId" />
+            <input type="hidden" name="noControl" value="@TempData["noControl"]" />
+            <div class="form-group">
+                <label asp-for="ParcialUno" class="form-label">Parcial Uno</label>
+                <input asp-for="ParcialUno" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="ParcialDos" class="form-label">Parcial Dos</label>
+                <input asp-for="ParcialDos" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="ParcialTres" class="form-label">Parcial Tres</label>
+                <input asp-for="ParcialTres" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

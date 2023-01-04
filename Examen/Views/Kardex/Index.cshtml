@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Kardex>
+
+<h1>Kardex</h1>
+
+<p>
+    @if (Model.Count() > 4)
+    {
+        <p>Materias Asignadas!</p>
+    } else
+    {
+        <a asp-action="Create" asp-route-id="@TempData["noControl"]">Agregar Materia</a>
+    }
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Materia.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Calificacion.ParcialUno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Calificacion.ParcialDos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Calificacion.ParcialTres)
+            </th>
+            <th>
+                Calificacion final
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Materia.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Calificacion.ParcialUno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Calificacion.ParcialDos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Calificacion.ParcialTres)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Calificacion.Final)
+                </td>
+                <td>
+                    <a asp-controller="Calificacion" asp-action="Index" asp-route-id="@item.CalificacionId">Calificar</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+    <p>
+        <a asp-controller="Alumnos" asp-action="Index">Regresar a alumnos</a>
+    </p>
+</table>

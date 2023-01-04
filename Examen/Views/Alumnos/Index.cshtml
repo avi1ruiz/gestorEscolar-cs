@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Examen.Models.Alumno>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Añadir</a>
+</p>
+
+<form asp-action="Index">
+    <p>
+        Buscar: <input type="text" name="buscador" class="form-text"/>
+        <input type="submit" class="btn btn-primary"/>
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NoControl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaNacimiento)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoControl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AlumnoId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.AlumnoId">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.AlumnoId">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
